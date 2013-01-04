@@ -1,0 +1,65 @@
+table
+{
+border-spacing:3;
+border-style:groove;
+border-width:1px;
+border-color:#000000;
+font:16px Georgia, serif;
+padding:0;
+border-radius:10px;
+}
+
+th
+{
+color:#42DB2F;
+font-weight:100;
+padding:0;
+text-align:left;
+vertical-align:top;
+}
+
+tr
+{
+color:#F25130;
+font-weight:100;
+}
+
+tr:hover td
+{
+background:#6CFF40;
+background: -moz-linear-gradient(top,  #6CFF40 0%, #FF3061 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6CFF40), color-stop(100%,#FF3061));
+background: -webkit-linear-gradient(top,#6CFF40 0%,#FF3061 100%);
+background: -o-linear-gradient(top,#6CFF40 0%,#FF3061 100%);
+background: -ms-linear-gradient(top,#6CFF40 0%,#FF3061 100%);
+background: linear-gradient(top,#6CFF40 0%,#FF3061 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6CFF40',endColorstr='#FF3061',GradientType=0s);
+color:#FF6F3B;
+}
+
+td
+{
+padding:0;
+text-align:left;
+vertical-align:top;
+}
+
+th:first-child
+{
+border-top-left-radius:10px;
+}
+
+th:last-child
+{
+border-top-right-radius:10px;
+}
+
+tr:last-child td:first-child
+{
+border-bottom-left-radius:10px;
+}
+
+tr:last-child td:last-child
+{
+border-bottom-right-radius:10px;
+}

@@ -6,7 +6,110 @@
 
 <struts>
 
-<package name="default" extends="struts-default" namespace="/">
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.custom.i18n.resources" value="ApplicationResources" />
 
-</package>
+
+	<package name="default" extends="struts-default" namespace="/">
+
+
+		<action name="login" class="iiitb.timesheet.action.Login"
+			method="execute">
+			<result name="admin">AdminHome.jsp</result>
+			<result name="manager">Manager.jsp</result>
+			<result name="team_member">Member.jsp</result>
+			<result name="error">Login.jsp</result>
+		</action>
+
+		<action name="admin" class="iiitb.timesheet.action.Admin"
+			method="execute">
+			<result name="success">AddEmployee.jsp</result>
+
+		</action>
+
+		<action name="add_employee" class="iiitb.timesheet.action.AddEmployee"
+			method="execute">
+			<result name="success">Admin.jsp</result>
+		</action>
+
+		<action name="get_employee" class="iiitb.timesheet.action.GetEmployee"
+			method="execute">
+			<result name="success">UpdateEmployee.jsp</result>
+		</action>
+
+		<action name="update_employee" class="iiitb.timesheet.action.UpdateEmployee"
+			method="execute">
+			<result name="success">Admin.jsp</result>
+		</action>
+
+		<action name="admin_home" class="iiitb.timesheet.action.AdminHome"
+			method="execute">
+			<result name="AddUpdateEmployee">Admin.jsp</result>
+			<result name="SubmitTimesheet">Admin.jsp</result>
+
+		</action>
+
+
+
+		<action name="Manager" class="iiitb.timesheet.action.ManagerAction">
+			<result name="SubmitTimesheet">Test.jsp</result>
+			<result name="ApproveTimesheet">ApproveTimesheet.jsp</result>
+			<result name="CreateProject">Project.jsp</result>
+			<result name="ViewReport">Report.jsp</result>
+			<result name="Manager">Manager.jsp</result>
+			<result name="AssignEmp">AssignEmp.jsp</result>
+			<result name="AddClient">AddClient.jsp</result>
+		</action>
+
+		<action name="CreateProject" class="iiitb.timesheet.action.CreateProject">
+			<result name="success">Project.jsp</result>
+			<result name="error">Project.jsp</result>
+		</action>
+
+		<action name="AssignEmp" class="iiitb.timesheet.action.AssignEmpAction">
+			<result name="success">AssignEmpSuccess.jsp</result>
+			<result name="error">AssignEmp.jsp</result>
+		</action>
+
+		<action name="ApproveTimesheet" class="iiitb.timesheet.action.ApproveTimesheet">
+			<result name="success">ApproveTimesheet.jsp</result>
+			<result name="error">ApproveTimesheet.jsp</result>
+		</action>
+
+
+		<action name="Report" class="iiitb.timesheet.action.ReportAction">
+			<result name="success">TimesheetReport.jsp</result>
+			<result name="error">Report.jsp</result>
+		</action>
+
+		<action name="addclient" class="iiitb.timesheet.action.AddClient">
+			<result name="success">AddClient.jsp</result>
+			<result name="error">Manager.jsp</result>
+		</action>
+
+
+
+
+
+		<action name="member" class="iiitb.timesheet.action.MemberAction">
+			<result name="SubmitTimesheet">TimeSheet.jsp</result>
+			<result name="MyProject">MyProject.jsp</result>
+			<result name="PasswordManagement">PasswordManagement.jsp</result>
+		</action>
+
+		<action name="timesheet" class="iiitb.timesheet.action.TimeSheetAction">
+			<result name="refresh-success">TimeSheet.jsp</result>
+			<result name="success">Result.jsp</result>
+			<result name="error">Error.jsp</result>
+		</action>
+
+		<action name="checkpass" class="iiitb.timesheet.action.PasswordManagementAction">
+			<result name="success">Result.jsp</result>
+			<result name="error">PasswordManagement.jsp</result>
+
+		</action>
+
+
+	</package>
 </struts>
