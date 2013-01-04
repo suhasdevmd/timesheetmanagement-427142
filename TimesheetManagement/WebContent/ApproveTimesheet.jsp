@@ -9,18 +9,23 @@
 <link href="mystyle.css" rel="stylesheet" type="text/css">
 <title>Approve Timesheet</title>
 </head>
-<body style="height: 550px; border: 1px groove blue;">
+<body style="height: 100%; border: 1px groove blue;">
+<img src="<s:url value="/images/timesheet.png"/>" />
 <br/>
+
+
 	<s:form action="ApproveTimesheet" method="POST" theme="simple">
-		<div align="center">
+		<!--  <div align="center">-->
+		<div id="wrap" style="float: left;">
 			<s:label name="SelectEmp" value="  Select an Employee :"></s:label>
 			<s:select label="  Select an Employee" headerKey="-1"
 				headerValue="Select Employee"
 				list="emp"
 				name="employeename" value="-1" />
+		</div>
 		
 		<s:submit name="buttonName" value="Search Timesheet" cssClass="button_example"></s:submit>
-		</div>
+		
 		<br/><br/>
 
 		<div align="center">

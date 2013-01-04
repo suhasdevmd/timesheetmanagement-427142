@@ -59,6 +59,7 @@ public class Login extends ActionSupport implements SessionAware {
 			//if(usertype == "admin") {
 			this.employees.clear();
 			this.employees = EmployeeService.getEmployees("");
+			System.out.println("sdev : - > "+usertype);
 			return usertype;
 			//}
 			//return usertype;

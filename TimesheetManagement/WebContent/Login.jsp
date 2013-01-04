@@ -5,7 +5,7 @@
 <title>TIMESHEET</title>
 <link rel="stylesheet" href="mystyle.css">
 <style type="text/css">
-#mysubmit {
+#mysubmit1 {
 	-moz-box-shadow: inset 0px 1px 0px 0px #0f0e0f;
 	-webkit-box-shadow: inset 0px 1px 0px 0px #0f0e0f;
 	box-shadow: inset 0px 1px 0px 0px #0f0e0f;
@@ -39,25 +39,47 @@
 	position: relative;
 	top: 1px;
 }
+
+fieldset {
+  padding: 1em;
+  font:100%/1 sans-serif;
+  width:50%;
+  }
+legend1 {
+  
+  width:50%;
+  border:1px solid green;
+  margin-right:0.5em;
+  padding-top:0.2em;
+  text-align:left;
+  font-weight:bold;
+  }
 </style>
 </head>
-<body>
-	<h1>TIMESHEET LOGIN</h1>
+<body style="height: 550px; border: 1px groove blue;">
+	
+	<img alt="Timesheet" src="<s:url value="/images/timesheet.png"/>">
+	<br/><br/>
 	<s:if test="hasActionErrors()">
-		<div class="errors">
+		<div class="error">
 			<s:actionerror />
 		</div>
 	</s:if>
 
+	<br/><br/><br/>
+
+	<div align="right">
+    <fieldset>
+	<legend>TimeSheet Login</legend>
 	<s:form action="login.action" method="post">
-		<fieldset>
-			<legend>TimeSheet Login:</legend>
+		
 			<s:textfield name="username" label="UserName" id="myinput" size="20" />
 			<s:password name="password" label="Password" id="myinput" size="20" />
-			<s:submit name="commandButton" id="mysubmit" value="Login"
-				align="center" />
-		</fieldset>
+			<s:submit name="commandButton" id="mysubmit" value="  Login  "
+				align="center" cssClass="button_example"/>
+		
 	</s:form>
-
+	</fieldset>
+	</div>
 </body>
 </html>
