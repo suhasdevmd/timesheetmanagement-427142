@@ -58,7 +58,7 @@ public class EmployeeService {
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			java.sql.Connection connection=DriverManager.getConnection("jdbc:mysql://localhost/timesheet?user=root&password=password");
+			java.sql.Connection connection=DB.getConnection();
 			java.sql.Statement statement = connection.createStatement();
 			String sql="select role_id from role where role_name = '"+name+"'";
 
@@ -223,7 +223,7 @@ public class EmployeeService {
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			java.sql.Connection connection=DriverManager.getConnection("jdbc:mysql://localhost/timesheet?user=root&password=password");
+			java.sql.Connection connection=DB.getConnection();
 			java.sql.Statement statement = connection.createStatement();
 			String sql="select role_name from role where role_id = '"+role_id+"'";
 
