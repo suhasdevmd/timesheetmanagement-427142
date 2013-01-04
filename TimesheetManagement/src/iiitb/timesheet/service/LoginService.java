@@ -15,7 +15,7 @@ public class LoginService {
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			java.sql.Connection connection=DriverManager.getConnection("jdbc:mysql://localhost/timesheet?user=root&password=password");
+			java.sql.Connection connection=DB.getConnection();
 			java.sql.Statement statement = connection.createStatement();
 			String sql="select * from  useraccount where username = '"+username+"' and password= '"+pass+"' ";
 			

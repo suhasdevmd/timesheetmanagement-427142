@@ -35,14 +35,15 @@
 
 </style>
 </head>
-<body bgcolor="#4C4C4C">
+<body>
 <h1>TIMESHEET LOGIN</h1>
 <s:if test="hasActionErrors()">
    <div class="errors">
       <s:actionerror/>
    </div>
 </s:if>
-<center><s:form action="login.action" method="post">
+
+<s:form action="login.action" method="post">
     <s:textfield name="username" label = "UserName" id="myinput" 
       size="20" />
     <s:password name="password" label="Password" id="myinput"
@@ -50,6 +51,6 @@
     <s:submit name = "commandButton" id="mysubmit" value="Login" 
       align="center" />
 </s:form>
-</center>
+
 </body>
 </html>

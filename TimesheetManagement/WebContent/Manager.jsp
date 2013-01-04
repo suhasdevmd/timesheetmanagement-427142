@@ -18,7 +18,7 @@
 <s:div>
 <img src="<s:url value="/images/submit.jpg"/>" />
 <s:url var="SubmitTimesheet" action="Manager">
-    <s:param name="function" value="'SubmitTimsheet'"></s:param>
+    <s:param name="function" value="'SubmitTimesheet'"></s:param>
 </s:url>
 <s:a href="%{#SubmitTimesheet}">Submit Timesheet</s:a>
 </s:div>

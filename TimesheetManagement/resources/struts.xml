@@ -46,14 +46,14 @@
 		<action name="admin_home" class="iiitb.timesheet.action.AdminHome"
 			method="execute">
 			<result name="AddUpdateEmployee">Admin.jsp</result>
-			<result name="SubmitTimesheet">Admin.jsp</result>
+			<result name="SubmitTimesheet">TimeSheet.jsp</result>
 
 		</action>
 
 
 
 		<action name="Manager" class="iiitb.timesheet.action.ManagerAction">
-			<result name="SubmitTimesheet">Test.jsp</result>
+			<result name="SubmitTimesheet">TimeSheet.jsp</result>
 			<result name="ApproveTimesheet">ApproveTimesheet.jsp</result>
 			<result name="CreateProject">Project.jsp</result>
 			<result name="ViewReport">Report.jsp</result>

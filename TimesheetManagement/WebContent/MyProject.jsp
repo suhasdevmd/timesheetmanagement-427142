@@ -12,10 +12,10 @@
 	<center>
 		<s:iterator value="projectlist">
 			<s:label>Project Number : </s:label>
-			<s:property value="projectnumber" />
+			<s:property value="project_num" />
 			<br>
 			<s:label>Project Name   : </s:label>
-			<s:property value="projectname" />
+			<s:property value="project_name" />
 			<br>
 			<s:label>Start Date     : </s:label>
 			<s:property value="startdate" />
