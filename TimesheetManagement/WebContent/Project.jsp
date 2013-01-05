@@ -10,8 +10,8 @@
 <link href="mystyle.css" rel="stylesheet" type="text/css">
 <title>Project</title>
 </head>
-<body style="height: 550px; border: 1px groove blue;">
-
+<body style="height: 100%; border: 1px groove black;">
+	<img src="<s:url value="/images/timesheet.png"/>" />
 	<s:if test="hasActionErrors()">
 		<div class="errors">
 			<s:actionerror />
@@ -20,56 +20,78 @@
 
 	<s:form action="CreateProject" method="POST" theme="simple">
 
-		<div>
-		
-			<div id="wrapper">
-			<s:label name="ProjectNumber" value="  Project Number :"></s:label>
-			<s:textfield name="ProjectNumber" label="Project Number"
-				id="ProjectNumber">
-			</s:textfield>
-			</div>
-			
-			<div id="wrapper">
-			<s:label name="ProjectName" value="  Project Name :"></s:label>
-			<s:textfield name="ProjectName" label="Project Name" id="ProjectName">
-			</s:textfield>
-			</div>
-			
-			<div id="wrapper">
-			<s:label name="ProjectDescription" value="  Project Description :"></s:label>
-			<s:textfield name="ProjectDesc" label="Project Description"
-				id="ProjectDesc">
-			</s:textfield>
-			</div>
-			
-			<div id="wrapper">
-			<sd:datetimepicker name="StartDate" label="Start Date"
-				displayFormat="dd-MM-yyyy" value="%{'today'}" />
-			</div>
-			
-			<div id="wrapper">
-			<sd:datetimepicker name="EndDate" label="End Date"
-				displayFormat="dd-MM-yyyy" value="%{'today'}" />
-			</div>
-			
-			<div id="wrapper"> 
-			<s:label name="CostPerHour" value="  Cost Per Hour :"></s:label>
-			<s:textfield name="Cost" label="Cost Per Hour" id="Cost">
-			</s:textfield>
-			</div>
-			
-			
-			<div id="wrapper">
-			<s:label name="Client" value="  Client :"></s:label>
-			<s:select label="Client" headerKey="-1" headerValue="Select Client"
-				list="clients" name="client" value="-1" />
-			</div>
+		<div id="CrtProj" align="left">
+
+			<table>
+				<tr>
+					<td><s:label name="ProjectNumber" value="  Project Number "></s:label>
+					</td>
+					<td><s:textfield name="ProjectNumber" label="Project Number"
+							id="ProjectNumber">
+						</s:textfield></td>
+				</tr>
+
+
+				<tr>
+					<td><s:label name="ProjectName" value="  Project Name "></s:label>
+					</td>
+					<td><s:textfield name="ProjectName" label="Project Name"
+							id="ProjectName">
+						</s:textfield></td>
+				</tr>
+
+				<tr>
+					<td><s:label name="ProjectDescription"
+							value="  Project Description "></s:label>
+					</td>
+					<td><s:textfield name="ProjectDesc"
+							label="Project Description" id="ProjectDesc">
+						</s:textfield></td>
+				</tr>
+
+
+				<tr>
+					<td><s:label name="startDate" value="Start Date"></s:label>
+					</td>
+					<td><sd:datetimepicker name="StartDate"
+							displayFormat="dd-MM-yyyy" value="%{'today'}" /></td>
+				</tr>
+
+
+				<tr>
+					<td><s:label name="endDate" value="End Date"></s:label>
+					</td>
+					<td><sd:datetimepicker name="EndDate"
+							displayFormat="dd-MM-yyyy" value="%{'today'}" /></td>
+				</tr>
+
+
+				<tr>
+					<td><s:label name="CostPerHour" value="  Cost Per Hour "></s:label>
+					</td>
+					<td><s:textfield name="Cost" label="Cost Per Hour" id="Cost">
+						</s:textfield></td>
+				</tr>
+
+				<tr>
+					<td><s:label name="Client" value="  Client "></s:label>
+					</td>
+					<td><s:select label="Client" headerKey="-1"
+							headerValue="Select Client" list="clients" name="client"
+							value="-1" /></td>
+				</tr>
+				<tr><td></td></tr>
+				<tr><td></td></tr>
+				<tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+			</table>
 		</div>
 		<div id="wrapper2" align="right">
 			<s:submit name="CreateProj" id="CreateProj" value="Create Project"
-				cssClass="button_example" >
+				cssClass="button_example" style="margin-right:40px">
 			</s:submit>
 		</div>
 	</s:form>
+	<br />
+	<br />
 </body>
 </html>

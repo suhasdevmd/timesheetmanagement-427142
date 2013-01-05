@@ -100,7 +100,7 @@
 
 		<action name="timesheet" class="iiitb.timesheet.action.TimeSheetAction">
 			<result name="refresh-success">TimeSheet.jsp</result>
-			<result name="success">Result.jsp</result>
+			<result name="success">TimeSheet.jsp</result>
 			<result name="error">Error.jsp</result>
 		</action>
 

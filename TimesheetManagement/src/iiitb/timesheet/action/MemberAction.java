@@ -4,9 +4,11 @@ import iiitb.timesheet.model.AssignedEmployees;
 import iiitb.timesheet.model.Assignment;
 import iiitb.timesheet.model.Employee;
 import iiitb.timesheet.model.Project;
+import iiitb.timesheet.model.TimesheetEmployee;
 import iiitb.timesheet.service.AssignmentService;
 import iiitb.timesheet.service.EmployeeService;
 import iiitb.timesheet.service.ProjectService;
+import iiitb.timesheet.service.TimeSheetService;
 import iiitb.timesheet.service.UserAccountService;
 
 import java.util.ArrayList;
@@ -18,6 +20,7 @@ public class MemberAction extends ActionSupport{
 	private String function;
 	private ArrayList<Project> projectlist = new ArrayList<Project>();
 	private ArrayList<AssignedEmployees> otheremp = new ArrayList<AssignedEmployees>();
+	ArrayList<TimesheetEmployee> viewtimesheet = new ArrayList<TimesheetEmployee>();
 	private String name;
 
 	public String getName() {
@@ -59,6 +62,8 @@ public class MemberAction extends ActionSupport{
 		System.out.println("inside execute -- > "+function);
 
 		if(function.equalsIgnoreCase("SubmitTimsheet")){
+			int empid = 1;
+			viewtimesheet = TimeSheetService.findTimeSheet(" where t.emp_id ='"+empid+"' and a.timesheet_id = t.timesheet_id and p.project_num = t.project_num;");
 			val="SubmitTimesheet";
 		}
 
@@ -70,16 +75,6 @@ public class MemberAction extends ActionSupport{
 			/* getting the other employees of the project */
 			otheremp = AssignmentService.getOtherEmp(pid);
 			System.out.println("otheremp size :"+otheremp.size());
-
-
-
-
-
-
-
-
-
-
 
 			/*ArrayList<Employee> temp = EmployeeService.findEmployeeDetails("where emp_id = "+empid);
 				System.out.println("Temp size :"+temp.size());
@@ -98,5 +93,13 @@ public class MemberAction extends ActionSupport{
 	System.out.println("Val = " +val);
 
 	return val;
-}	
+}
+
+	public ArrayList<TimesheetEmployee> getViewtimesheet() {
+		return viewtimesheet;
+	}
+
+	public void setViewtimesheet(ArrayList<TimesheetEmployee> viewtimesheet) {
+		this.viewtimesheet = viewtimesheet;
+	}	
 }

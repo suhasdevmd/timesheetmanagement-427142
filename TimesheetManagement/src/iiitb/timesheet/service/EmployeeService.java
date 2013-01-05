@@ -41,13 +41,20 @@ public class EmployeeService {
 	public int insertIntoUserAcc(Employee employee) {
 		//System.out.println("hello \n\n");
 
+		int status;
 		String insertSQL = "insert into useraccount "
 			+ "(emp_id, role_id, username, password) " + 
 			"values(" + employee.getEmp_id()
 			+ ", " + getId(employee.getRole_name()) + ", '" + employee.getFirstname() +
 			"', '" + getCredentials(employee.getLastname(),employee.getPhone_num()) + "');";
 		System.out.println(insertSQL);
-		return DB.update(insertSQL);
+		status=DB.update(insertSQL);
+		
+		
+		
+		// send email
+	
+		return status;
 	}
 
 

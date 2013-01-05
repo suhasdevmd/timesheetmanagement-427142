@@ -33,32 +33,47 @@ if(y.length<10 || y.length>10)
 </script>
 
 </head>
-<body>
-<s:form name="myForm" action="update_employee.action" method="post" onsubmit="return validateForm();">
+<body style="height: 550px; border: 1px groove black;">
+<img src="<s:url value="/images/timesheet.png"/>" />
+<s:form name="myForm" action="update_employee.action" method="post" onsubmit="return validateForm();" theme="simple">
 
-<h1 align="center">UPDATE EMPLOYEE</h1> 
+
 <s:hidden name="emp_id" />
+
+
+<div id="CrtProj" align="left">
 <table>
 <tr>
+	<td><s:label name="firstname" value="First Name"></s:label></td>
     <td><s:textfield name="firstname" label="FIRST NAME" id="myinput" /> </td>
 </tr>
 <tr>
+	<td><s:label name="lastname" value="Last Name"></s:label></td>
     <td><s:textfield name="lastname" label="LAST NAME" id="myinput"/> </td>
 </tr>
 <tr>
+	<td><s:label name="email" value="Email Address"></s:label></td>
     <td><s:textfield name="email" label="EMAIL ADDRESS" id="myinput"/> </td>
 </tr>
 <tr>
+	<td><s:label name="phone" value="Phone Number"></s:label></td>
     <td><s:textfield name="phone_num" label="PHONE NUMBER" id="myinput"/> </td>
 </tr>
 <tr>
-  <td><sd:datetimepicker name="join_date" label="JOINING DATE" displayFormat="dd-MM-yyyy"  /></td>
+	<td><s:label name="joiningdate" value="Joining Date"></s:label></td>
+  <td><sd:datetimepicker name="join_date" displayFormat="dd-MM-yyyy"  /></td>
 </tr>
 <tr>
+	<td><s:label name="role" value="Role"></s:label></td>
     <td><s:select label="ROLE NAME" headerKey="Select role" headerValue="Select role" list="{'admin', 'manager', 'team_member'}" name="role_name" /> </td>
 </tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td></td></tr>
 </table>
-<h2 align="left"><s:submit value="Update" id="mysubmit" /></h2>
+</div>
+<h2 align="right"><s:submit value=" Update Details" id="mysubmit" cssClass="button_example" style="margin-right:40px;"/></h2>
 </s:form>
 
 </body>

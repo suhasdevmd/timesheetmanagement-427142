@@ -1,22 +1,15 @@
 package iiitb.timesheet.model;
 
-public class Timesheet {
+public class TimesheetEmployee {
 
-	int timesheet_id;
-	int project_num;
-	String task_name;
-	int emp_id;
-	String emp_name;
-	String work_date;
-	float no_of_hours;
-	
-	public String getEmp_name() {
-		return emp_name;
-	}
-	public void setEmp_name(String emp_name) {
-		this.emp_name = emp_name;
-	}
-	
+	private int timesheet_id;
+	private String project_name;
+	private int project_num;
+	private String task_name;
+	private int emp_id;
+	private String work_date;
+	private float no_of_hours;
+	private String status;
 	
 	public int getTimesheet_id() {
 		return timesheet_id;
@@ -24,28 +17,18 @@ public class Timesheet {
 	public void setTimesheet_id(int timesheet_id) {
 		this.timesheet_id = timesheet_id;
 	}
-	
-	
-	
-	
 	public int getProject_num() {
 		return project_num;
 	}
 	public void setProject_num(int project_num) {
 		this.project_num = project_num;
 	}
-	
-	
-	
 	public String getTask_name() {
 		return task_name;
 	}
 	public void setTask_name(String task_name) {
 		this.task_name = task_name;
 	}
-	
-	
-	
 	public int getEmp_id() {
 		return emp_id;
 	}
@@ -64,10 +47,16 @@ public class Timesheet {
 	public void setNo_of_hours(float no_of_hours) {
 		this.no_of_hours = no_of_hours;
 	}
-	
-	
-	
-	
-	
-	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getProject_name() {
+		return project_name;
+	}
+	public void setProject_name(String project_name) {
+		this.project_name = project_name;
+	}
 }

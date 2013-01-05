@@ -9,7 +9,8 @@
 <link href="mystyle.css" rel="stylesheet" type="text/css">
 <title>Add Client</title>
 </head>
-<body>
+<body style="height: 100%; border: 1px groove blue;">
+<img src="<s:url value="/images/timesheet.png"/>" />
 	<s:form action="addclient" method="POST" theme="simple">
 		<div id="wrapper">
 			<s:label name="ClientName" value="  Client Name :"></s:label>

@@ -13,7 +13,10 @@
 
 </head>
 
-<body style="height: 550px; border: 1px groove blue;">
+<body style="height: auto; border: 1px groove blue;" marginheight="5px">
+
+<img src="<s:url value="/images/timesheet.png"/>" />
+
 	<s:form action="AssignEmp" method="POST" theme="simple">
 		<!-- drop down menu for project selection 
 

@@ -9,6 +9,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import iiitb.timesheet.model.*;
 import iiitb.timesheet.service.AssignmentService;
 import iiitb.timesheet.service.ProjectService;
+import iiitb.timesheet.service.TimeSheetService;
 
 public class TimeSheetAction extends ActionSupport {
 
@@ -24,6 +25,7 @@ public class TimeSheetAction extends ActionSupport {
 	private float hrs;
 	private String status;
 	private String commandButton = "";
+	ArrayList<TimesheetEmployee> viewtimesheet = new ArrayList<TimesheetEmployee>();
 	
 	public float getHrs() {
 		return hrs;
@@ -84,6 +86,14 @@ public class TimeSheetAction extends ActionSupport {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	
+	public ArrayList<TimesheetEmployee> getViewtimesheet() {
+		return viewtimesheet;
+	}
+
+	public void setViewtimesheet(ArrayList<TimesheetEmployee> viewtimesheet) {
+		this.viewtimesheet = viewtimesheet;
+	}
 
 	public String execute() {
 		
@@ -93,9 +103,12 @@ public class TimeSheetAction extends ActionSupport {
 		System.out.println("button :" + this.commandButton);
 		
 		if(this.commandButton.equals("Refresh")){			
+			System.out.println("button :"+this.commandButton);
 			projectname = ProjectService.findProjectName("where project_num =" + won);
 			taskname = AssignmentService.findTaskName("where emp_id = "+empid+" and pid = "+pid);
 			status = "pending";
+			viewtimesheet.clear();
+			viewtimesheet = TimeSheetService.findTimeSheet(" where t.emp_id ='"+empid+"' and a.timesheet_id = t.timesheet_id and p.project_num = t.project_num;");
 			
 			return "refresh-success";
 		}
@@ -107,8 +120,15 @@ public class TimeSheetAction extends ActionSupport {
 		
 			String approvalReturnValue = InsertIntoDB.addApproval(taskname, status, won, date);
 			System.out.println(approvalReturnValue);
+			viewtimesheet.clear();
+			viewtimesheet = TimeSheetService.findTimeSheet(" where t.emp_id ='"+empid+"' and a.timesheet_id = t.timesheet_id and p.project_num = t.project_num;");
 			
 			if(timeSheetReturnValue.equals("success") && approvalReturnValue.equals("success")){
+				projectname = "Project Name";
+				taskname = "Task Name";
+				status = "Pending...";
+				commandButton="success";
+				hrs=0;
 				return "success";
 			}
 			else
@@ -116,8 +136,7 @@ public class TimeSheetAction extends ActionSupport {
 		}
 		else 
 			return "error";
-	}
-		
+	}	
 }
 	
 

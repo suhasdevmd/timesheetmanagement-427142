@@ -44,6 +44,10 @@ public class AddEmployee extends ActionSupport  {
 		this.employees = EmployeeService.getEmployees("");
 		employee=EmployeeService.getEmployee("where phone_num=" + employee.getPhone_num());
 		employeeService.insertIntoUserAcc(employee);
+		
+		
+		
+		
 		return "success";
 	}
 	public String getFirstname() {

@@ -44,9 +44,10 @@ fieldset {
   padding: 1em;
   font:100%/1 sans-serif;
   width:50%;
+  margin-right:30px;
   }
 legend1 {
-  
+  text-color:blue;
   width:50%;
   border:1px solid green;
   margin-right:0.5em;
@@ -56,7 +57,7 @@ legend1 {
   }
 </style>
 </head>
-<body style="height: 550px; border: 1px groove blue;">
+<body style="height: auto; border: 1px groove black;" marginheight="5px">
 	
 	<img alt="Timesheet" src="<s:url value="/images/timesheet.png"/>">
 	<br/><br/>

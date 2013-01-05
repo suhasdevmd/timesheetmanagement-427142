@@ -9,8 +9,8 @@
 <link href="mystyle.css" rel="stylesheet" type="text/css">
 <title>Timesheet Report</title>
 </head>
-<body style="height: 550px; border: 1px groove blue;">
-
+<body style="height: auto; border: 1px groove black;" marginheight="5px">
+<img src="<s:url value="/images/timesheet.png"/>" />
 	<div><s:label name="heading" value="Timesheet status summary."></s:label></div>
 	<div><s:label name="Date" value="Date : "></s:label>
 	<s:date name="currentDate" format="dd/MM/yyyy" /></div>
