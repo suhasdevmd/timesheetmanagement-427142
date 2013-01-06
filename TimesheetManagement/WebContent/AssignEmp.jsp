@@ -13,7 +13,7 @@
 
 </head>
 
-<body style="height: auto; border: 1px groove blue;" marginheight="5px">
+<body style="height: auto; border: 1px groove black;" marginheight="5px">
 
 <img src="<s:url value="/images/timesheet.png"/>" />
 
@@ -57,15 +57,17 @@
 		<br />
 
 
-		<div align="left" id="wrapper1">
+		<div align="left" id="wrapper1" style="height:auto;margin-left:30px;">
 			<s:label name="SelectEmp" value="  Select Employees :"></s:label>
 			<br />
 			<hr>
+			
 			<s:checkboxlist label="  Select Employees" labelposition="top"
-				list="emp" name="employees" value="1" theme="vertical-checkbox"/>
+				list="emp" name="employees" value="1" theme="vertical-checkbox" />
 		</div>
 		<br />
 		<div align="left" id="wrapper2">
+		&nbsp; &nbsp; &nbsp;
 			<s:submit name="Assign Employees" value="Assign Employees" cssClass="button_example"></s:submit>
 		</div>
 	</s:form>

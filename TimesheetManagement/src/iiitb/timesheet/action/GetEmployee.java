@@ -18,7 +18,7 @@ public class GetEmployee extends ActionSupport{
 	private String firstname="";
 	private String lastname="";
 	private String email="";
-	private int phone_num=0;
+	private long phone_num=0;
 	private String join_date;
 	private int manager_id=0;
 	private int role_id=0;
@@ -65,11 +65,11 @@ public class GetEmployee extends ActionSupport{
 		this.email = email;
 	}
 
-	public int getPhone_num() {
+	public long getPhone_num() {
 		return phone_num;
 	}
 
-	public void setPhone_num(int phone_num) {
+	public void setPhone_num(long phone_num) {
 		this.phone_num = phone_num;
 	}
 

@@ -123,9 +123,9 @@ body {
 #wrapper {
 	background-color: #b0c4de;
 	height: 40px;
-	margin-left: 10px;
+	margin-left: 30px;
 	margin-top: 10px;
-	margin-right: 10px;
+	margin-right: 30px;
 	border-top-left-radius: 20px;
 	border-top-right-radius: 20px;
 	border-bottom-left-radius: 20px;
@@ -151,10 +151,10 @@ body {
 
 #wrapper1 {
 	background-color: #b0c4de;
-	height: 200px;
-	margin-left: 10px;
+	height: auto;
+	margin-left: 30px;
 	margin-top: 10px;
-	margin-right: 10px;
+	margin-right: 30px;
 	border-top-left-radius: 20px;
 	border-top-right-radius: 20px;
 	border-bottom-left-radius: 20px;
@@ -162,6 +162,7 @@ body {
 	padding-top: 15px;
 	padding-left: 30px;
 	padding-right: 30px;
+	padding-bottom: 15px;
 }
 
 #myproj {
@@ -273,3 +274,23 @@ body {
 	text-align: left;
 	margin-left: 30px;
 }
+
+
+.checkbox {
+	width: 28px;
+	height: 28px;
+	background: #fcfff4;
+
+	background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	background: -ms-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=0 );
+	margin: 20px auto;
+	-webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+	-moz-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+	box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+	position: relative;
+}
+

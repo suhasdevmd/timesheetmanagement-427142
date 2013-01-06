@@ -137,7 +137,7 @@ public class EmployeeService {
 			employee.setFirstname(resultSet.getString("firstname"));
 			employee.setLastname(resultSet.getString("lastname"));
 			employee.setEmail(resultSet.getString("email"));
-			employee.setPhone_num(resultSet.getInt("phone_num"));
+			employee.setPhone_num(resultSet.getLong("phone_num"));
 			employee.setJoin_date(resultSet.getString("join_date"));
 			employee.setRole_name(getRoleName(resultSet.getInt("role_id")));
 			employee.setManager_id(resultSet.getInt("manager_id"));
@@ -207,7 +207,7 @@ public class EmployeeService {
 
 		return formattedDate;
 	}
-	public static String getCredentials(String lastname,int phone_number){
+	public static String getCredentials(String lastname,long phone_number){
 
 		String credentials = lastname;
 		String phno = String.valueOf(phone_number);

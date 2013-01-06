@@ -85,9 +85,12 @@ public class ApproveTimesheet extends ActionSupport{
 	public String execute(){
 		
 		
-		
+		System.out.println(buttonName);
 
-		if(buttonName.startsWith("Approve")){
+		
+		if(buttonName.contains("Approve")){
+			
+			System.out.println("inside approve");
 
 			System.out.println("Approve");
 			if(time!=null){
@@ -108,7 +111,7 @@ public class ApproveTimesheet extends ActionSupport{
 			
 			return SUCCESS;
 		}
-		else if(buttonName.startsWith("Reject")){
+		else if(buttonName.contains("Reject")){
 
 			System.out.println("Reject");
 			

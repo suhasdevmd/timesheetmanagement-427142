@@ -1,13 +1,11 @@
 package iiitb.timesheet.action;
 
+import iiitb.timesheet.model.Employee;
+import iiitb.timesheet.service.EmployeeService;
+
 import java.util.ArrayList;
 
-
-import iiitb.timesheet.service.EmployeeService;
-import iiitb.timesheet.util.MyLog;
 import com.opensymphony.xwork2.ActionSupport;
-
-import iiitb.timesheet.model.Employee;
 
 
 public class AddEmployee extends ActionSupport  {
@@ -15,7 +13,7 @@ public class AddEmployee extends ActionSupport  {
 	private String firstname="";
 	private String lastname="";
 	private String email="";
-	private int phone_num=0;
+	private long phone_num=0;
 	private String join_date;
 	private String role_name;
     private int emp_id;
@@ -74,11 +72,11 @@ public class AddEmployee extends ActionSupport  {
 		this.email = email;
 	}
 
-	public int getPhone_num() {
+	public long getPhone_num() {
 		return phone_num;
 	}
 
-	public void setPhone_num(int phone_num) {
+	public void setPhone_num(long phone_num) {
 		this.phone_num = phone_num;
 	}
 

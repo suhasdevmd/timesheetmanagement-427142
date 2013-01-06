@@ -10,7 +10,7 @@ import java.util.Random;
 public class AddClientService {
 	
 	
-	public int addClient(String name){
+	public int addClient(String name,String email,long phone,String city){
 		
 		
 		System.out.println(name);
@@ -28,12 +28,18 @@ public class AddClientService {
 			con=DB.getConnection();
 			stmt=con.createStatement();
 			
-			String sql="insert into client("+"client_name,"+ 
+			String sql="insert into client("+"client_name,"+
+			"email,"+
+			"phone,"+
+			"city,"+
 			"username,"+ 
 			"password) "+  
 			"values("+
 			//			"'',"+
 			"'"+name+"' ,"+
+			"'"+email+"' ,"+
+			"'"+phone+"' ,"+
+			"'"+city+"' ,"+
 			"'"+username+"' ,"+
 			"'"+password+"'"+
 			");";

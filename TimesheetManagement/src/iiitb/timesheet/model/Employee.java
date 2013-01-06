@@ -19,7 +19,7 @@ public class Employee {
 	private String firstname;
 	private String lastname;
 	private String email;
-	private int phone_num;
+	private long phone_num;
 	private String join_date;
 	private int manager_id;
 	private int role_id;
@@ -65,11 +65,11 @@ public class Employee {
 		this.email = email;
 	}
 
-	public int getPhone_num() {
+	public long getPhone_num() {
 		return phone_num;
 	}
 
-	public void setPhone_num(int phone_num) {
+	public void setPhone_num(long phone_num) {
 		this.phone_num = phone_num;
 	}
 

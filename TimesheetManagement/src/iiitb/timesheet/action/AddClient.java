@@ -8,6 +8,28 @@ public class AddClient extends ActionSupport{
 
 	private String ClientName;
 	private String City;
+	private String email;
+	private long phone;
+	
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public long getPhone() {
+		return phone;
+	}
+
+	public void setPhone(long phone) {
+		this.phone = phone;
+	}
+
+
+	
 
 	public String getCity() {
 		return City;
@@ -30,10 +52,12 @@ public class AddClient extends ActionSupport{
 		
 		System.out.println(ClientName);
 		System.out.println(City);
+		System.out.println(email);
+		System.out.println(phone);
 		
 		
 		AddClientService acs=new AddClientService();
-		int i=acs.addClient(ClientName);
+		int i=acs.addClient(ClientName,email,phone,City);
 		
 		
 		return SUCCESS;

@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="mystyle.css">
-<title>Link</title>
+<title>Administrator</title>
 </head>
 <body style="height: auto; border: 1px groove black;" marginheight="5px">
 	<img src="<s:url value="/images/timesheet.png"/>" />

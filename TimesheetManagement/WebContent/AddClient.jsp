@@ -9,7 +9,7 @@
 <link href="mystyle.css" rel="stylesheet" type="text/css">
 <title>Add Client</title>
 </head>
-<body style="height: 100%; border: 1px groove blue;">
+<body style="height: 100%; border: 1px groove black;">
 <img src="<s:url value="/images/timesheet.png"/>" />
 	<s:form action="addclient" method="POST" theme="simple">
 		<div id="wrapper">
@@ -23,6 +23,21 @@
 			<s:label name="City" value="  City :"></s:label>
 			<s:textfield name="City" label="City"
 				id="City">
+			</s:textfield>
+		</div>
+		
+		
+		<div id="wrapper">
+			<s:label name="email" value="  Email :"></s:label>
+			<s:textfield name="email" label="Email"
+				id="email">
+			</s:textfield>
+		</div>
+		
+		<div id="wrapper">
+			<s:label name="phone_num" value="  Contact Number :"></s:label>
+			<s:textfield name="phone" label="Phone"
+				id="phone" >
 			</s:textfield>
 		</div>
 
