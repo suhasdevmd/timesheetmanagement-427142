@@ -81,6 +81,9 @@
 		<action name="Report" class="iiitb.timesheet.action.ReportAction">
 			<result name="success">TimesheetReport.jsp</result>
 			<result name="error">Report.jsp</result>
+			<result name="Timesheet">TimesheetReport.jsp</result>
+			<result name="Employee">EmployeeReport.jsp</result>
+			<result name="Project">ProjectReport.jsp</result>
 		</action>
 
 		<action name="addclient" class="iiitb.timesheet.action.AddClient">
@@ -109,6 +112,16 @@
 			<result name="error">PasswordManagement.jsp</result>
 
 		</action>
+
+
+		<action name="exceldemo" class="iiitb.timesheet.action.ExcelDemo">
+        <result name="success" type="stream">
+            <param name="contentType">"application/vnd.ms-excel"</param>
+            <param name="inputName">excelStream</param>
+            <param name="contentDisposition">attachment;filename="suhas.xls"</param>
+            <param name="bufferSize">1024</param>
+        </result>
+    </action>
 
 
 	</package>

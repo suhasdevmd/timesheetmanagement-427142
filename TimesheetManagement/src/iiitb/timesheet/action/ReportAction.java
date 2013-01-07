@@ -1,5 +1,6 @@
 package iiitb.timesheet.action;
 
+import iiitb.timesheet.model.ProjectReport;
 import iiitb.timesheet.model.Report;
 import iiitb.timesheet.service.ReportService;
 
@@ -14,10 +15,18 @@ public class ReportAction extends ActionSupport{
 	
 	private String reportname;
 	ArrayList<Report> reports=new ArrayList<Report>();
+	ArrayList<ProjectReport> projectReport=new ArrayList<ProjectReport>();
 	private Date currentDate;
 	private String employee_name;
 	
+
 	
+	public ArrayList<ProjectReport> getProjectReport() {
+		return projectReport;
+	}
+	public void setProjectReport(ArrayList<ProjectReport> projectReport) {
+		this.projectReport = projectReport;
+	}
 	public String getEmployee_name() {
 		return employee_name;
 	}
@@ -49,28 +58,45 @@ public class ReportAction extends ActionSupport{
 
 	public String execute(){
 		
+		
+		String val="error";
 		ReportService rp=new ReportService();
 		
 		
 		if(reportname.startsWith("Timesheet")){
+		
+			System.out.println(reportname);
 			
+			reports=rp.getReports();
+			
+			val="Timesheet";
 		}
 		if(reportname.startsWith("Project")){
 			
+			
+			projectReport=rp.getProjectReport();
+			
+			System.out.println("Project rep size suhas : "+projectReport.size());
+			val="Project";
 		}
 		if(reportname.startsWith("Employee")){
 			
+			
+			val="Employee";
 		}
 		
-		System.out.println(reportname);
 		
-		reports=rp.getReports();
 		setCurrentDate(new Date());
 		
 		System.out.println(new Date());
+		
+		
+		
+		// ---> ******** Employee name needs to be retrieved from session ********* ////
+		
 		employee_name="Suhas Dev";
 		
-		return SUCCESS;
+		return val;
 	}
 	
 }
