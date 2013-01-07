@@ -31,6 +31,7 @@
 		<action name="add_employee" class="iiitb.timesheet.action.AddEmployee"
 			method="execute">
 			<result name="success">Admin.jsp</result>
+			<result name="duplicate">AddEmployee.jsp</result>
 		</action>
 
 		<action name="get_employee" class="iiitb.timesheet.action.GetEmployee"
@@ -55,6 +56,8 @@
 		<action name="Manager" class="iiitb.timesheet.action.ManagerAction">
 			<result name="SubmitTimesheet">TimeSheet.jsp</result>
 			<result name="ApproveTimesheet">ApproveTimesheet.jsp</result>
+			
+			<result name="MyProject">MyProject.jsp</result>
 			<result name="CreateProject">Project.jsp</result>
 			<result name="ViewReport">Report.jsp</result>
 			<result name="Manager">Manager.jsp</result>

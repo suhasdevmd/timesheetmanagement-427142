@@ -35,6 +35,14 @@
 	<div id="wrappermenu">
 		<s:label value="Project"></s:label>
 	</div>
+	
+	<s:div cssClass="divalign">
+		<img src="<s:url value="/images/arrow.png"/>" />
+		<s:url var="MyProject" action="Manager">
+			<s:param name="function" value="'MyProject'"></s:param>
+		</s:url>
+		<s:a href="%{#MyProject}">My Project</s:a>
+	</s:div>
 	<s:div cssClass="divalign">
 		<img src="<s:url value="/images/arrow.png"/>" />
 		<s:url var="CreateProject" action="Manager">

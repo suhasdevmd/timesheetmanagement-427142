@@ -36,60 +36,70 @@ if(y.length<10 || y.length>10)
 </script>
 
 </head>
-<body style="height: 550px; border: 1px groove black;" marginheight="5px">
-<div>
-	<img src="<s:url value="/images/timesheet.png"/>" />
-	<s:form name="myForm" action="add_employee.action" method="post"
-		onsubmit="return validateForm();" theme="simple">
+<body style="height: 550px; border: 1px groove black;"
+	marginheight="5px">
+	<div>
+		<img src="<s:url value="/images/timesheet.png"/>" />
+		<s:form name="myForm" action="add_employee.action" method="post"
+			onsubmit="return validateForm();" theme="simple">
 
+			<s:if test="hasActionErrors()">
+				<div class="error">
+					<s:actionerror />
+				</div>
+			</s:if>
 
-		<div id="CrtProj" align="left">
-			<table>
-				<tr>
-					<td><s:label name="firstname" value="First Name"></s:label>
-					</td>
-					<td><s:textfield name="firstname" label="FIRST NAME"
-							id="myinput" required="true" /></td>
-				</tr>
-				<tr>
-					<td><s:label name="lastname" value="Last Name"></s:label>
-					</td>
-					<td><s:textfield name="lastname" label="LAST NAME"
-							id="myinput" required="true" /></td>
-				</tr>
-				<tr>
-					<td><s:label name="email" value="Email Address"></s:label>
-					</td>
-					<td><s:textfield name="email" label="EMAIL ADDRESS"
-							id="myinput" required="true" /></td>
-				</tr>
-				<tr>
-					<td><s:label name="phone" value="Phone Number"></s:label>
-					</td>
-					<td><s:textfield name="phone_num" label="PHONE NUMBER"
-							id="myinput" required="true" /></td>
-				</tr>
-				<tr>
-					<td><s:label name="joiningdate" value="Joining Date"></s:label>
-					</td>
-					<td><sd:datetimepicker name="join_date"
-							displayFormat="dd-MM-yyyy" value="today" /></td>
-				</tr>
-				<tr>
-					<td><s:label name="role" value="Role"></s:label>
-					</td>
-					<td><s:select label="ROLE NAME" headerKey="Select role"
-							headerValue="Select role"
-							list="{'admin', 'manager', 'team_member'}" name="role_name" /></td>
-				</tr>
-			</table>
-		</div>
-		<h2 align="right">
-			<s:submit value=" Add Employee " id="mysubmit"
-				cssClass="button_example" style="margin-right:40px" />
-		</h2>
+			<br />
+			
 
-	</s:form>
-</div>
+			<div id="CrtProj" align="left">
+				<table>
+					<tr>
+						<td><s:label name="firstname" value="First Name"></s:label></td>
+						<td><s:textfield name="firstname" label="FIRST NAME"
+								id="myinput" required="true" />
+						</td>
+					</tr>
+					<tr>
+						<td><s:label name="lastname" value="Last Name"></s:label></td>
+						<td><s:textfield name="lastname" label="LAST NAME"
+								id="myinput" required="true" />
+						</td>
+					</tr>
+					<tr>
+						<td><s:label name="email" value="Email Address"></s:label></td>
+						<td><s:textfield name="email" label="EMAIL ADDRESS"
+								id="myinput" required="true" />
+						</td>
+					</tr>
+					<tr>
+						<td><s:label name="phone" value="Phone Number"></s:label></td>
+						<td><s:textfield name="phone_num" label="PHONE NUMBER"
+								id="myinput" required="true" />
+						</td>
+					</tr>
+					<tr>
+						<td><s:label name="joiningdate" value="Joining Date"></s:label>
+						</td>
+						<td><sd:datetimepicker name="join_date"
+								displayFormat="dd-MM-yyyy" value="today" />
+						</td>
+					</tr>
+					<tr>
+						<td><s:label name="role" value="Role"></s:label></td>
+						<td><s:select label="ROLE NAME" headerKey="Select role"
+								headerValue="Select role"
+								list="{'admin', 'manager', 'team_member'}" name="role_name" />
+						</td>
+					</tr>
+				</table>
+			</div>
+			<h2 align="right">
+				<s:submit value=" Add Employee " id="mysubmit"
+					cssClass="button_example" style="margin-right:40px" />
+			</h2>
+
+		</s:form>
+	</div>
 </body>
 </html>

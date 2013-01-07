@@ -49,16 +49,16 @@ public class EmployeeService {
 			"', '" + getCredentials(employee.getLastname(),employee.getPhone_num()) + "');";
 		System.out.println(insertSQL);
 		status=DB.update(insertSQL);
-		
-		
-		
+
+
+
 		// send email
-	
+
 		return status;
 	}
 
 
-	public int getId(String name) {
+	public static int getId(String name) {
 
 
 		ResultSet rs=null;
@@ -207,6 +207,11 @@ public class EmployeeService {
 
 		return formattedDate;
 	}
+	
+	
+	
+	
+	
 	public static String getCredentials(String lastname,long phone_number){
 
 		String credentials = lastname;
@@ -222,9 +227,9 @@ public class EmployeeService {
 	}
 
 
-	
+
 	public static String getRoleName(int role_id){
-		
+
 		ResultSet rs=null;
 		String role_name="";
 
@@ -258,12 +263,12 @@ public class EmployeeService {
 
 
 		return role_name;
-		
+
 	}
-	
-	
-	
-	
+
+
+
+
 	public static int findManagerID(String selectionModifier) {
 
 		Employee emp = new Employee();
@@ -340,13 +345,37 @@ public class EmployeeService {
 		return empArrList;
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+	public static boolean checkForDuplicateEmp(Employee employee)  {
+
+		ResultSet resultSet = null;
+		String query= "select emp_id from employee "  +  " where firstname= '" + employee.getFirstname() + "' and lastname= '" + employee.getLastname() + "' and email= '" + employee.getEmail()
+		+ "' and phone_num= " + employee.getPhone_num() + " and join_date= '" + employee.getJoin_date() + "' and role_id= " + getId(employee.getRole_name());
+		System.out.println(query);
+		//System.out.println(employee.getFirstname());
+		Connection connection = DB.getConnection();
+		resultSet = DB.readFromDB(query, connection);
+		try {
+			if (resultSet!=null && resultSet.first()) {
+				DB.close(resultSet);
+				DB.close(connection);
+				return false;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		DB.close(resultSet);
+		DB.close(connection);
+		return true;	
+
+
+	}
+
+
+
+
+
 }

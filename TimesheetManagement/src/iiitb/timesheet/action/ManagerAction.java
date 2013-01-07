@@ -1,7 +1,11 @@
 package iiitb.timesheet.action;
 
+import iiitb.timesheet.model.AssignedEmployees;
+import iiitb.timesheet.model.Project;
 import iiitb.timesheet.model.Timesheet;
+import iiitb.timesheet.service.AssignmentService;
 import iiitb.timesheet.service.ManagerService;
+import iiitb.timesheet.service.ProjectService;
 
 import java.util.ArrayList;
 
@@ -17,7 +21,26 @@ public class ManagerAction extends ActionSupport{
 	ArrayList<Timesheet> timesheets=new ArrayList<Timesheet>();
 	ArrayList<String> clients=new ArrayList<String>();
 	
+	private ArrayList<Project> projectlist = new ArrayList<Project>();
+	private ArrayList<AssignedEmployees> otheremp = new ArrayList<AssignedEmployees>();
 	
+	
+	public ArrayList<Project> getProjectlist() {
+		return projectlist;
+	}
+
+	public void setProjectlist(ArrayList<Project> projectlist) {
+		this.projectlist = projectlist;
+	}
+
+	public ArrayList<AssignedEmployees> getOtheremp() {
+		return otheremp;
+	}
+
+	public void setOtheremp(ArrayList<AssignedEmployees> otheremp) {
+		this.otheremp = otheremp;
+	}
+
 	public ArrayList<String> getClients() {
 		return clients;
 	}
@@ -86,6 +109,18 @@ public class ManagerAction extends ActionSupport{
 			timesheets=ms.getTimesheets();
 			emp=ms.getEmployees();
 			
+		}
+		if(function.equalsIgnoreCase("MyProject")){
+			
+			val="MyProject";
+			
+			int empid=1;
+			int pid = AssignmentService.findProjectID("where emp_id = "+empid);
+			projectlist = ProjectService.findProjectDetails("where pid = "+pid,empid);
+
+			/* getting the other employees of the project */
+			otheremp = AssignmentService.getOtherEmp(pid);
+			System.out.println("otheremp size :"+otheremp.size());
 		}
 		if(function.equalsIgnoreCase("CreateProject")){
 			

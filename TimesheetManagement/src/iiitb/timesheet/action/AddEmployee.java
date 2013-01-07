@@ -16,13 +16,13 @@ public class AddEmployee extends ActionSupport  {
 	private long phone_num=0;
 	private String join_date;
 	private String role_name;
-    private int emp_id;
+	private int emp_id;
 	private ArrayList<Employee> employees = new ArrayList<Employee>();
-	
+
 	public String execute() {
 		//MyLog.log("in AddEmployee.execute() with  = ");
 		//if (this.firstname.isEmpty()) {
-			//return "initial";
+		//return "initial";
 		//}
 		System.out.println(emp_id);
 		Employee employee = new Employee();
@@ -35,19 +35,32 @@ public class AddEmployee extends ActionSupport  {
 		employee.setPhone_num(phone_num);
 		employee.setJoin_date(EmployeeService.getDate(join_date));
 		employee.setRole_name(role_name);
-		employeeService.insert(employee);
-		
-		
-		this.employees.clear();
-		this.employees = EmployeeService.getEmployees("");
-		employee=EmployeeService.getEmployee("where phone_num=" + employee.getPhone_num());
-		employeeService.insertIntoUserAcc(employee);
-		
-		
-		
-		
-		return "success";
+
+
+
+		Boolean val = EmployeeService.checkForDuplicateEmp(employee);
+		System.out.println("value is"+val);
+
+
+		if(val==true) {
+
+			employeeService.insert(employee);
+
+
+			this.employees.clear();
+			this.employees = EmployeeService.getEmployees("");
+			employee=EmployeeService.getEmployee("where phone_num=" + employee.getPhone_num());
+			employeeService.insertIntoUserAcc(employee);
+			return "success";
+
+		}else {
+			addActionError(getText("Employee already exists!!"));
+			return "duplicate";
+		}
 	}
+
+
+
 	public String getFirstname() {
 		return firstname;
 	}
@@ -103,7 +116,7 @@ public class AddEmployee extends ActionSupport  {
 	public void setJoin_date(String join_date) {
 		this.join_date = join_date;
 	}
-	
+
 	public ArrayList<Employee> getEmployees() {
 		return employees;
 	}
@@ -111,6 +124,6 @@ public class AddEmployee extends ActionSupport  {
 	public void setEmployees(ArrayList<Employee> employees) {
 		this.employees = employees;
 	}
-	
+
 }
 
