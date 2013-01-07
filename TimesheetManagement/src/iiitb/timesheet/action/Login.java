@@ -50,8 +50,19 @@ public class Login extends ActionSupport implements SessionAware {
 
 		LoginService login = new LoginService();
 
-		String usertype=login.AuthenticateUser(username, password);
+		System.out.println("suhas1");
+		
+		
+		if ( username.length() == 0 || password.length() == 0) {
+			addActionError(getText("Invalid username/password combination"));
 
+			return "error";
+		}
+		
+		String usertype=login.AuthenticateUser(username, password);
+		
+		System.out.println("userrrrrrrrrrrrrrrrr "+usertype);
+		
 		if (usertype!=null) {
 			Map session = ActionContext.getContext().getSession();
 			session.put("login","true");
@@ -66,11 +77,9 @@ public class Login extends ActionSupport implements SessionAware {
 		} 
 		
 		
-		else if ( username.length() == 0 || password.length() == 0) {
-			addActionError(getText("Invalid username/password combination"));
-
-			return "error";
-		}
+		
+		
+		
 		addActionError(getText("Your login attempt was not successful. Please try again"));
 		return "error";
 	}
