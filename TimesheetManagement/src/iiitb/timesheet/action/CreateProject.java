@@ -104,7 +104,7 @@ public class CreateProject extends ActionSupport{
 		project.setClient_id(cp.getClientID(client));
 
 
-		try {
+		/*try {
 			int i=cp.addProject1(project);
 
 			System.out.println(i);
@@ -116,7 +116,39 @@ public class CreateProject extends ActionSupport{
 
 		clients=ms.getClients();
 
-		return SUCCESS;
+		return SUCCESS;*/
+
+
+		Boolean val = CreateProjectService.checkForDuplicateProj(project);
+		int i = 0;
+		if(val==true) {
+			try {
+				i=cp.addProject1(project);
+
+				System.out.println(i);
+
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			
+			
+			if(i>0){
+			
+			clients=ms.getClients();
+			addActionMessage(getText("Project added successfully ."));
+			return SUCCESS;
+			}else{
+				addActionError(getText("Error in adding Project. Try Again."));
+				return "error";
+			}
+		} else {
+			addActionError(getText("Project already exists!!"));
+			return "duplicate";
+		}
+
+
 	}
 
 

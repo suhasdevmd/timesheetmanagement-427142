@@ -1,5 +1,6 @@
 package iiitb.timesheet.action;
 
+import iiitb.timesheet.model.Client;
 import iiitb.timesheet.model.ProjectReport;
 import iiitb.timesheet.model.Report;
 import iiitb.timesheet.service.ReportService;
@@ -9,11 +10,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Map;
 
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ExcelDemo extends ActionSupport{
@@ -173,14 +176,22 @@ public class ExcelDemo extends ActionSupport{
 				rowhead.createCell((short) 4).setCellValue("End Date");
 				rowhead.createCell((short) 5).setCellValue("First Name");
 				rowhead.createCell((short) 6).setCellValue("Last Name");
-
+				Map session=ActionContext.getContext().getSession();
+				ArrayList<Client> clientdet=(ArrayList<Client>)session.get("ClientDetails");
 
 
 				// retrieve the data to fill in the excel file
 
 				ReportService rp=new ReportService();
-				Preports=rp.getProjectReport();
-
+				
+				if(clientdet!=null){
+				
+				Preports=rp.getProjectReport(clientdet.get(0).getClient_id());
+				}
+				else{
+					Preports=rp.getProjectReport1();
+				}
+					
 
 				for(int i=0;i<Preports.size();i++){
 					//////You can repeat this part using for or while to create multiple rows//////

@@ -33,9 +33,13 @@ public class UserAccountService {
 		
 		java.sql.Connection connection = DB.getConnection();
 		String query = "Update useraccount set password = '"+value+"' "+selectionModifier;
+		
+		System.out.println(query);
+		
 		try {
 			Statement stmt = connection.createStatement();
 			stmt.executeUpdate(query);
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -46,6 +50,10 @@ public class UserAccountService {
 		
 		java.sql.Connection connection = DB.getConnection();
 		String query = "Update client set password = '"+value+"' "+selectionModifier;
+		
+		
+		System.out.println(query);
+		
 		try {
 			Statement stmt = connection.createStatement();
 			stmt.executeUpdate(query);
@@ -54,4 +62,31 @@ public class UserAccountService {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
+	public static UserAccount findUsernamePassword(String selectionModifier) {
+
+        UserAccount ua = new UserAccount();
+        java.sql.ResultSet resultSet = null;
+        String query = "select username,password from useraccount "+selectionModifier;
+        java.sql.Connection connection = DB.getConnection();
+        resultSet = DB.readFromDB(query, connection);
+
+        try {
+                while (resultSet.next()) {
+                        String username = resultSet.getString("username");
+                        ua.setUsername(username);
+
+                        String password = resultSet.getString("password");
+                        ua.setPassword(password);
+                }
+        } catch (SQLException e) {
+                e.printStackTrace();
+        }
+        DB.close(resultSet);
+        DB.close(connection);
+
+        return ua;
+}
 }

@@ -38,6 +38,9 @@ public class TimeSheetService {
 		ArrayList<TimesheetEmployee> timesheetemployee = new ArrayList<TimesheetEmployee>();
 		java.sql.ResultSet resultSet = null;
 		String query = "select t.project_num,t.task_name,t.work_date,t.no_of_hours,a.status,p.project_name from approval a,timesheet t,project p" + selectionModifier;
+		System.out.println(query);
+		
+		
 		java.sql.Connection connection = DB.getConnection();
 		resultSet = DB.readFromDB(query, connection);
 
@@ -93,5 +96,30 @@ public class TimeSheetService {
 		return timesheetemployee;
 	}
 
+	
+	
+	public static int findEmployeeID(String selectionModifier) {
+
+        Timesheet ts = new Timesheet();
+        java.sql.ResultSet resultSet = null;
+        String query = "select emp_id from timesheet " + selectionModifier;
+        java.sql.Connection connection = DB.getConnection();
+        resultSet = DB.readFromDB(query, connection);
+
+        try {
+                while (resultSet.next()) {
+                        int empID = resultSet.getInt("emp_id");
+                        ts.setEmp_id(empID);
+                }
+        } catch (SQLException e) {
+                e.printStackTrace();
+        }
+        DB.close(resultSet);
+        DB.close(connection);
+
+        return ts.getEmp_id();
+}
+	
+	
 
 }

@@ -133,41 +133,74 @@ public class CreateProjectService {
 
 		return 0;
 	}
-	
-	
-	
+
+
+
 	public int getClientID(String name){
-		
-		
+
+
 		int id = 0;
-		
+
 		Connection con;
 		ResultSet rs;
 		String query;
-		
+
 		try {
 			con=DB.getConnection();
 			query="select client_id from client where client_name="+"'"+name+"';";
 			rs=DB.readFromDB(query, con);
-			
+
 			while(rs.next()){
 				//System.out.println("-- > > > "+rs.getString("project_name"));
 				id=rs.getInt("client_id");
 			}
-			
+
 			System.out.println("id---> "+id);
-			
+
 		}catch (Exception e) {
 			// TODO: handle exception
 		}
-	
-		
+
+
 		return id;
-		
-		
-		
-		
-		
+
+
+
+
+
 	}
+
+
+
+
+	public static boolean checkForDuplicateProj(Project project)  {
+
+		ResultSet resultSet = null;
+		String query= "select pid from project "  +  " where project_num= " + project.getProject_num() + " and project_name= '" + project.getProject_name() + "' and description= '" + project.getDescription()
+		+ "' and startdate= '" + project.getStartdate() + "' and enddate= '" + project.getEnddate() + "' and cost_per_hour= " + project.getCost_per_hour() +
+		" and client_id= " + project.getClient_id();
+		System.out.println(query);
+		//System.out.println(employee.getFirstname());
+		Connection connection = DB.getConnection();
+		resultSet = DB.readFromDB(query, connection);
+		try {
+			if (resultSet!=null && resultSet.first()) {
+				DB.close(resultSet);
+				DB.close(connection);
+				return false;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		DB.close(resultSet);
+		DB.close(connection);
+		return true;        
+
+
+	}
+
+
+
 
 }

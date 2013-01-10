@@ -314,7 +314,7 @@ public class EmployeeService {
 				String email = resultSet.getString("email");
 				emp.setEmail(email);
 
-				int phno = resultSet.getInt("phone_num");
+				long phno = resultSet.getLong("phone_num");
 				emp.setPhone_num(phno);
 
 				String joindate = resultSet.getString("join_date");
@@ -327,7 +327,7 @@ public class EmployeeService {
 				else if(roleid == 2)
 					emp.setRole_name("Manager");
 				else if(roleid == 3)
-					emp.setRole_name("Employee");
+					emp.setRole_name("Team_Member");
 				else
 					emp.setRole_name("Client");
 

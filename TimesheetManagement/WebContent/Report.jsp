@@ -10,36 +10,120 @@
 <link rel="stylesheet" href="mystyle.css">
 <title>Report</title>
 </head>
-<body style="height: auto; border: 1px groove black;" marginheight="5px">
-	<img src="<s:url value="/images/timesheet.png"/>" />
+<body style="height: auto;">
 
-	<div id="wrappermenu">
-	<s:label value="Reports"></s:label></div>
-	<s:div cssClass="divalign">
-	<img src="<s:url value="/images/arrow.png"/>" />
-		<s:url var="Timesheet" action="Report">
-			<s:param name="reportname" value="'Timesheet'"></s:param>
-		</s:url>
-		<s:a href="%{#Timesheet}">Timesheet Report</s:a>
-	</s:div>
+	<div id="boundary">
 
-	<s:div cssClass="divalign">
-	<img src="<s:url value="/images/arrow.png"/>" />
-		<s:url var="Employee" action="Report">
-			<s:param name="reportname" value="'Employee'"></s:param>
-		</s:url>
-		<s:a href="%{#Employee}">Employee Report</s:a>
-	</s:div>
+		<br /> <img src="<s:url value="bk_in.jpg"/>" width="930px"
+			style="box-shadow: 0px 0px 20px rgba(0, 0, 0, .4);" />
 
-	<s:div cssClass="divalign">
-	<img src="<s:url value="/images/arrow.png"/>" />
-		<s:url var="Project" action="Report">
-			<s:param name="reportname" value="'Project'"></s:param>
-		</s:url>
-		<s:a href="%{#Project}">Project Report</s:a>
-	</s:div>
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
+		<div
+			style="height: 80px; width: 300px; box-shadow: 0px 0px 20px rgba(0, 0, 0, .4); margin: 30px; padding: 20px; float: left;">
+			<s:if test="#session.EmployeeDetails != null">
+				<s:iterator value="#session.EmployeeDetails">
+					<div align="left">
 
+						<b><s:label name="empName" value="Employee Name : "></s:label>
+						</b>
+						<s:property value="firstname" />
+						&nbsp;
+						<s:property value="lastname" />
+					</div>
+					<br />
+					<div align="left">
+						<b><s:label name="role" value="Role : "></s:label> </b>
+						<s:property value="role_name" />
+					</div>
+				</s:iterator>
+			</s:if>
+			<br />
+			<s:if test="#session.todayDate != null">
+				<div align="left">
+					<b><s:label name="date" value="Login Date : "></s:label> </b>
+					<s:property value="#session.todayDate" />
+				</div>
+			</s:if>
+		</div>
+
+		<div align="right"
+			style="margin-bottom: 20px; margin-top: 25px; float: left;">
+
+
+			<s:form action="home" method="POST">
+				<div
+					style="overflow: hidden; left; position: relative; vertical-align: middle;">
+					<s:submit name="home" value=" Home " cssClass="button_example"></s:submit>
+				</div>
+			</s:form>
+
+
+
+			<s:form action="logout.action" method="POST">
+				<%-- <div
+					style="overflow: hidden; left; position: relative; vertical-align: middle;">
+					<s:submit name="home" value=" Home " cssClass="button_example"></s:submit>
+				</div> --%>
+				<div
+					style="overflow: hidden; right; margin-left: 10px; vertical-align: middle;">
+					<s:submit name="logout" value="Logout" cssClass="button_example"></s:submit>
+				</div>
+			</s:form>
+		</div>
+
+
+
+		<s:if test="#session.login != 'true'">
+			<jsp:forward page="Login.jsp" />
+		</s:if>
+
+		<%-- 
+		<s:form action="logout.action" method="POST">
+			<s:submit name="logout" value="Logout"></s:submit>
+		</s:form> --%>
+
+
+
+		<div
+			style="margin: 170px 30px 30px; box-shadow: 0px 0px 20px rgba(0, 0, 0, .4); padding: 20px; min-height: 400px;">
+
+
+
+			<div id="wrappermenu">
+				<s:label value="Reports"></s:label>
+			</div>
+			<br />
+			<s:div cssClass="divalign">
+				<img src="<s:url value="/images/arrow.png"/>" />
+				<s:url var="Timesheet" action="Report">
+					<s:param name="reportname" value="'Timesheet'"></s:param>
+				</s:url>
+				<s:a href="%{#Timesheet}">Timesheet Report</s:a>
+			</s:div>
+
+
+			<%-- <s:div cssClass="divalign">
+				<img src="<s:url value="/images/arrow.png"/>" />
+				<s:url var="Employee" action="Report">
+					<s:param name="reportname" value="'Employee'"></s:param>
+				</s:url>
+				<s:a href="%{#Employee}">Employee Report</s:a>
+			</s:div> --%>
+
+			<s:div cssClass="divalign">
+				<img src="<s:url value="/images/arrow.png"/>" />
+				<s:url var="Project" action="Report">
+					<s:param name="reportname" value="'Project'"></s:param>
+				</s:url>
+				<s:a href="%{#Project}">Project Report</s:a>
+			</s:div>
+
+			<br> <br> <br> <br> <br> <br> <br>
+			<br> <br> <br> <br> <br> <br>
+
+		</div>
+	</div>
+	<h4 align="center">Copyright © 2013 TMS@IIITB. All rights
+		reserved.</h4>
 </body>
 </html>

@@ -1,17 +1,19 @@
 package iiitb.timesheet.action;
 
+import iiitb.timesheet.model.Employee;
+import iiitb.timesheet.service.EmployeeService;
+import iiitb.timesheet.service.LoginService;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Map;
 
-import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import iiitb.timesheet.model.Employee;
-
-import iiitb.timesheet.service.EmployeeService;
-import iiitb.timesheet.service.LoginService;
 public class Login extends ActionSupport implements SessionAware {
 
 	private static final long serialVersionUID = 1L;
@@ -67,6 +69,10 @@ public class Login extends ActionSupport implements SessionAware {
 			Map session = ActionContext.getContext().getSession();
 			session.put("login","true");
 			session.put("username",username);
+			Date today = new Date();
+            DateFormat df =new SimpleDateFormat("dd-MM-yyyy");
+            String newdate = df.format(today);
+            session.put("todayDate", newdate);
 			//if(usertype == "admin") {
 			this.employees.clear();
 			this.employees = EmployeeService.getEmployees("");

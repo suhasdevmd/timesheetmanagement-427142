@@ -68,7 +68,44 @@ public class ManagerService {
 	
 	
 	
-	public ArrayList<Timesheet> getTimesheets(){
+	
+	
+	
+	
+	
+	public ArrayList<String> getEmployeesFromDB(){
+		ArrayList<String> employees = new ArrayList<String>();
+		Connection con;
+		ResultSet rs;
+		String query;
+		
+		try {
+			con=DB.getConnection();
+			query="select firstname,lastname from employee where emp_id not in (select emp_id from assignment)";
+			rs=DB.readFromDB(query, con);
+			
+			while(rs.next()){
+				//System.out.println("-- > > > "+rs.getString("project_name"));
+				employees.add(rs.getString("firstname")+" "+rs.getString("lastname"));
+			}
+			
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		
+		
+		return employees;
+	}
+	
+	
+	
+	
+	
+	
+	
+	public ArrayList<Timesheet> getTimesheets(int manager_id){
 		ArrayList<Timesheet> timesheets=new ArrayList<Timesheet>();
 		
 		
@@ -84,7 +121,7 @@ public class ManagerService {
 			
 			query="select t.timesheet_id,project_num,task_name,emp_id,work_date"+
 			",no_of_hours from timesheet t,approval a where "+
-			"t.timesheet_id=a.timesheet_id and a.status='pending' ";
+			"t.timesheet_id=a.timesheet_id and a.status='pending' and a.manager_id="+"'"+manager_id+"';";
 			
 			
 			

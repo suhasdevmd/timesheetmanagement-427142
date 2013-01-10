@@ -1,9 +1,11 @@
 package iiitb.timesheet.service;
 
+import iiitb.timesheet.model.Client;
 import iiitb.timesheet.util.DB;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Random;
 
@@ -91,4 +93,34 @@ public class AddClientService {
 
 		return credentials;
 	}
+	
+	
+	public static boolean checkForDuplicateClient(Client client)  {
+
+        ResultSet resultSet = null;
+        String query= "select client_id from client "  +  " where client_name= '" + client.getClient_name() + "' and email= '" + client.getEmail() + "' and city= '" + client.getCity()
+        + "' and phone= " + client.getPhone_num();
+        System.out.println(query);
+        //System.out.println(employee.getFirstname());
+        Connection connection = DB.getConnection();
+        resultSet = DB.readFromDB(query, connection);
+        try {
+                if (resultSet!=null && resultSet.first()) {
+                        DB.close(resultSet);
+                        DB.close(connection);
+                        return false;
+                }
+        } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+        }
+        DB.close(resultSet);
+        DB.close(connection);
+        return true;        
+
+
+}
+	
+	
+	
 }

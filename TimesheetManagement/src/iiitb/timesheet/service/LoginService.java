@@ -1,13 +1,20 @@
 package iiitb.timesheet.service;
 
 
+import iiitb.timesheet.model.Client;
+import iiitb.timesheet.model.Employee;
 import iiitb.timesheet.util.DB;
 
-import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Map;
+
+import com.opensymphony.xwork2.ActionContext;
 public class LoginService {
 
 
+	Map session=ActionContext.getContext().getSession();
+	
 	public String AuthenticateUser(String username,String pass){
 
 		ResultSet rs=null;
@@ -28,6 +35,13 @@ public class LoginService {
 			
 			if(rs.next()){
 				try {
+					
+					int empid = rs.getInt("emp_id");
+                    ArrayList<Employee> empdetails = EmployeeService.findEmployeeDetails(" where emp_id = "+empid);
+                    
+                    session.put("EmployeeDetails", empdetails);
+					
+					
 					Class.forName("com.mysql.jdbc.Driver").newInstance();
 					java.sql.Connection connection1=DB.getConnection();
 					java.sql.Statement statement1 = connection.createStatement();
@@ -92,6 +106,39 @@ public class LoginService {
 
 			rs=statement.executeQuery(sql);	
 			if(rs.next()){
+				
+				Client client = new Client();
+                ArrayList<Client> clientdetails = new ArrayList<Client>();
+                
+                int client_id = rs.getInt("client_id");
+                client.setClient_id(client_id);
+                
+                String client_name = rs.getString("client_name");
+                client.setClient_name(client_name);
+                
+                String usrname = rs.getString("username");
+                client.setUsername(usrname);
+                
+                String pwd = rs.getString("password");
+                client.setPassword(pwd);
+                
+                String city = rs.getString("city");
+                client.setCity(city);
+                
+                String email = rs.getString("email");
+                client.setEmail(email);
+                
+                int phone_num = rs.getInt("phone");
+                client.setPhone_num(phone_num);
+                
+                clientdetails.add(client);
+                
+                session.put("ClientDetails", clientdetails);
+                
+                //return "client";
+				
+				
+				
 				return "client";
 			}else{
 

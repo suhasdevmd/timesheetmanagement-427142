@@ -1,7 +1,10 @@
 package iiitb.timesheet.action;
 
 import iiitb.timesheet.model.Employee;
+import iiitb.timesheet.model.SendMail;
+import iiitb.timesheet.model.UserAccount;
 import iiitb.timesheet.service.EmployeeService;
+import iiitb.timesheet.service.UserAccountService;
 
 import java.util.ArrayList;
 
@@ -18,6 +21,11 @@ public class AddEmployee extends ActionSupport  {
 	private String role_name;
 	private int emp_id;
 	private ArrayList<Employee> employees = new ArrayList<Employee>();
+	
+	
+	
+	
+	
 
 	public String execute() {
 		//MyLog.log("in AddEmployee.execute() with  = ");
@@ -51,6 +59,32 @@ public class AddEmployee extends ActionSupport  {
 			this.employees = EmployeeService.getEmployees("");
 			employee=EmployeeService.getEmployee("where phone_num=" + employee.getPhone_num());
 			employeeService.insertIntoUserAcc(employee);
+			
+			
+			
+			System.out.println("===================Ashwin edit===================");
+            
+            System.out.println("Employee ID : "+employee.getEmp_id());
+            ArrayList<Employee> temp = EmployeeService.findEmployeeDetails(" where emp_id = "+employee.getEmp_id());
+            for (int j = 0; j < temp.size(); j++) {
+                    email = temp.get(j).getEmail();
+                    System.out.println("Email : "+email);
+            }
+            UserAccount ua = new UserAccount();
+            ua = UserAccountService.findUsernamePassword(" where emp_id = "+emp_id);
+
+            System.out.println("UserName : "+ua.getUsername()+"\n Password : "+ua.getPassword()+"\n\n Please Login and Change Your password at the earliest.\n Thank You.");
+            String subject = "User Credentials";
+            String body = "Dear "+firstname+" "+lastname+",\n\n\tYour Employee Deatails have been added.\n\tUserName : "+ua.getUsername()+"\n\tPassword : "+ua.getPassword()+"\n\nPlease Login and change your password at the earliest.\n\tThank You.";
+
+            try {
+                    SendMail.sendTextMail(email, subject, body);
+            } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+            }
+			
+			
 			return "success";
 
 		}else {
